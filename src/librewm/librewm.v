@@ -40,22 +40,22 @@ fn C.wlr_output_init_render (output &C.wlr_output, allocator &C.wlr_allocator, r
 fn C.wlr_output_create_global (output &C.wlr_output)
 
 fn main() {
-    display 	  := C.wl_display_create ()
-    event_loop    := C.wl_display_get_event_loop (display)
-    backend 	  := C.wlr_backend_autocreate (event_loop, unsafe { nil })
-	renderer 	  := C.wlr_renderer_autocreate (backend)
+  display 	  	:= C.wl_display_create ()
+  event_loop    := C.wl_display_get_event_loop (display)
+  backend 	  	:= C.wlr_backend_autocreate (event_loop, unsafe { nil })
+	renderer 	  	:= C.wlr_renderer_autocreate (backend)
 	allocator 	  := C.wlr_allocator_autocreate (backend, renderer)
 	output_layout := C.wlr_output_layout_create () 
-	color		  := [f32(1.0), 0.0, 0.0, 1.0]
+	color		  		:= [f32(1.0), 0.0, 0.0, 1.0]
 	    
-    if !C.wlr_backend_start (backend) {
-        println ("Failed to start backend, aborting...")
-        exit(1)
-    }
+  if !C.wlr_backend_start (backend) {
+    println ("Failed to start backend, aborting...")
+    exit(1)
+  }
 
 	C.wlr_renderer_begin (renderer, 1920, 1080)
-    C.wlr_renderer_clear (renderer, &color[0])
-    C.wlr_renderer_end (renderer)
+  C.wlr_renderer_clear (renderer, &color[0])
+  C.wlr_renderer_end (renderer)
 
 	C.wl_display_run (display);	
 }
