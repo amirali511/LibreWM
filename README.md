@@ -7,6 +7,7 @@ window managers and compositors.
 
 ## Installing
 You need to install vlang before anything, so you can see how to do in [here](https://vlang.io).
+
 Arch:
 > `sudo pacman -S wlroots && sudo pacman -S base-devel`
 
